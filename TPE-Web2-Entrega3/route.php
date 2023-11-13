@@ -17,7 +17,7 @@ $router->addRoute('productos/:ID', 'GET', 'apiController', 'get');
 $router->addRoute('productos/:ID', 'DELETE','apiController','deleteProducto');
 $router->addRoute('productos/:ID', 'PUT','apiController', 'update');
 $router->addRoute('productosOrdenados/:sort/:ordenamiento', 'GET','apiController', 'getProductoOrdenado');
-
+$router->addRoute('productosOfertas/:Categoria', 'GET', 'apiController', 'getProductoOferta');
 
 
 

@@ -13,78 +13,136 @@
               $this->modelCategoria = new categoriasModel();
            }
        
-        public function get($params = []){
-            if (empty($params)){
+           public function get($params = []) {
+            if (empty($params)) {
                 $productos = $this->model->getProductos();
-                $this->view->response($productos ,200);
-            }else{
-                $producto = $this->model->getProducto($params[":ID"]);
-                if (!empty($producto)){
-                    $this->view->response($producto ,200);
-                }else{
-                    $this->view->response(['msg => la tarea' .$params[":ID"]. 'no existe'],404);
+                $this->view->response($productos, 200);
+            } else {
+                // Verifica si el parámetro ":ID" está presente
+                if (isset($params[":ID"])) {
+                    $producto = $this->model->getProducto($params[":ID"]);
+                    if (!empty($producto)) {
+                        $this->view->response($producto, 200);
+                    } else {
+                        $this->view->response(['msg' => 'El producto con ID ' . $params[":ID"] . ' no existe'], 404);
+                    }
+                } else {
+                    // Error 400: Solicitud incorrecta debido a parámetros inválidos
+                    $this->view->response(['msg' => 'Solicitud incorrecta. El parámetro :ID es inválido.'], 400);
                 }
             }
         }
-        public function deleteProducto($params = []){
-            $producto_id = $params[":ID"];
-            $producto = $this->model->getProducto($producto_id);
-            
-            if ($producto){
-                $this->model->eliminarProducto($producto_id);
-                $this->view->response('producto id= $producto_id eliminado con exito' ,200);
-            }
-            else{
-                $this->view->response('Producto $producto_id not found' ,404);
+        public function deleteProducto($params = []) {
+            // Verifica si el parámetro ":ID" está presente y es un número válido
+            if (isset($params[":ID"]) && is_numeric($params[":ID"])) {
+                $producto_id = $params[":ID"];
+                $producto = $this->model->getProducto($producto_id);
+        
+                if ($producto) {
+                    $this->model->eliminarProducto($producto_id);
+                    $this->view->response("Producto con ID $producto_id eliminado con éxito", 200);
+                } else {
+                    $this->view->response("Producto con ID $producto_id no encontrado", 404);
+                }
+            } else {
+                // Error 400: Solicitud incorrecta debido a parámetro :ID inválido o ausente
+                $this->view->response(['msg' => 'Solicitud incorrecta. El parámetro :ID es inválido o está ausente.'], 400);
             }
         }
-        function create($params = []){
+        
+        function create($params = []) {
             $body = $this->getData();
-            $nombre = $body->nombre_producto;
-            $modelo = $body->modelo;
-            $precio = $body->precio;
-            $categoria = $body->categoria;
-            $categoriaAinsertar = $this->modelCategoria->getCategoryByNombre($categoria);
-            if ($categoriaAinsertar){
-                $id_categoria = $categoriaAinsertar->id_categoria;
-                $this->model->insertProducto($nombre,$modelo,$precio,$id_categoria);
-                $this->view->response('El producto fue insertado',201);  
-            }else{
-                $this->view->response('La categoria no existe',404);
+        
+            // Verifica si los campos necesarios están presentes 
+            if (isset($body->nombre_producto, $body->modelo, $body->precio, $body->categoria)) {
+                $nombre = $body->nombre_producto;
+                $modelo = $body->modelo;
+                $precio = $body->precio;
+                $categoria = $body->categoria;
+        
+                // Obtiene la categoría por nombre
+                $categoriaAinsertar = $this->modelCategoria->getCategoryByNombre($categoria);
+        
+                if ($categoriaAinsertar) {
+                    $id_categoria = $categoriaAinsertar->id_categoria;
+        
+                    // Inserta el producto
+                    $this->model->insertProducto($nombre, $modelo, $precio, $id_categoria);
+                    $this->view->response('El producto fue insertado', 201);
+                } else {
+                    // La categoría no existe
+                    $this->view->response('La categoría no existe', 404);
+                }
+            } else {
+                // Error 400: Solicitud incorrecta debido a datos de solicitud incompletos o inválidos
+                $this->view->response(['msg' => 'Solicitud incorrecta. Los datos del producto son incompletos o inválidos.'], 400);
             }
-            
-            
         }
+        
         public function update($params = []) {
             $producto_id = $params[':ID'];
             $producto = $this->model->getProducto($producto_id);
         
             if ($producto) {
                 $body = $this->getData();
-                $nombre_producto = $body->nombre_producto;
-                $modelo = $body->modelo;
-                $precio = $body->precio;
-                $this->model->updateProductos($producto_id, $nombre_producto, $modelo, $precio);
         
-                $this->view->response("Producto actualizado correctamente", 200);
+                // Verifica si los campos necesarios están presentes
+                if (isset($body->nombre_producto, $body->modelo, $body->precio)) {
+                    $nombre_producto = $body->nombre_producto;
+                    $modelo = $body->modelo;
+                    $precio = $body->precio;
+        
+                    // Actualiza el producto
+                    $this->model->updateProductos($producto_id, $nombre_producto, $modelo, $precio);
+        
+                    $this->view->response("Producto actualizado correctamente", 200);
+                } else {
+                    // Error 400: Solicitud incorrecta debido a datos de solicitud incompletos
+                    $this->view->response(['msg' => 'Solicitud incorrecta. Los datos del producto son incompletos.'], 400);
+                }
             } else {
+                // Producto no encontrado
                 $this->view->response("Producto no encontrado", 404);
-            }        
+            }
         }
+        
         public function getProductoOrdenado($params = []) {
-            if (($params[':ordenamiento'] == 'asc' || $params[':ordenamiento'] == 'desc') &&
-                ($params[':sort'] == 'id_producto' || ($params[':sort'] == "nombre_producto") || ($params[':sort'] == "modelo") || ($params[':sort'] == "precio"))) {
-                    
+            // Verifica si los parámetros de ordenamiento son válidos
+            $ordenamientosValidos = ['asc', 'desc'];
+            $sortValidos = ['id_producto', 'nombre_producto', 'modelo', 'precio'];
+        
+            if (isset($params[':ordenamiento'], $params[':sort']) &&
+                in_array($params[':ordenamiento'], $ordenamientosValidos) &&
+                in_array($params[':sort'], $sortValidos)) {
+                
                 $formaOrdenam = $params[':ordenamiento'];
                 $valor = $params[':sort'];
         
-                // Realiza acciones con el resultado de la consulta*/
                 $productosOrdenados = $this->model->getProductosOrder($valor, $formaOrdenam);
         
-                // Puedes hacer algo con los productos ordenados, como enviarlos como respuesta a la vista
-                $this->view->response($productosOrdenados,200);
+                $this->view->response($productosOrdenados, 200);
             } else {
-                $this->view->response("No ingreso un campo correcto",404);
+                // Error 400: Solicitud incorrecta debido a parámetros inválidos o faltantes
+                $this->view->response("Solicitud incorrecta. Parámetros de ordenamiento inválidos o faltantes.", 400);
+            }
+        }
+        public function getProductoOferta($params = []) {
+            $categoriasPermitidas = ['Heladeras', 'Lavarropas', 'Audio_y_Video', 'Aire_y_Climatizacion'];
+        
+            if (isset($params[':Categoria']) && in_array($params[':Categoria'], $categoriasPermitidas)) {
+                $categoriaNombre = $params[':Categoria'];
+        
+                // Llamada a la función en el modelo para obtener productos en oferta filtrados por categoría
+                $productosEnOferta = $this->model->getProductosOferta($categoriaNombre);
+        
+                if ($productosEnOferta) {
+                    $this->view->response($productosEnOferta, 200);
+                } else {
+                    $this->view->response("No hay productos en oferta para la categoría '$categoriaNombre'", 404);
+                }
+            } else {
+                // Error 400: Solicitud incorrecta debido a categoría inválida o faltante
+                $this->view->response("Solicitud incorrecta. La categoría proporcionada no es válida.", 400);
             }
         }        
     }

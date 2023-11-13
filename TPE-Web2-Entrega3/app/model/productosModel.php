@@ -20,6 +20,17 @@
         $productos = $query->fetchAll(PDO::FETCH_OBJ);
         return $productos;
     } 
+    function getProductosOferta($categoriaNombre) {
+        $query = $this->db->prepare("SELECT * FROM producto 
+                                    WHERE oferta = 1 
+                                    AND id_categoria IN (SELECT id_categoria FROM categoria WHERE nombre_categoria = :Categoria)");
+        $query->bindParam(':Categoria', $categoriaNombre, PDO::PARAM_STR);
+        $query->execute();
+        $productos = $query->fetchAll(PDO::FETCH_OBJ);
+        return $productos;
+    }
+    
+    
     function getProducto($id){
         $query = $this->db->prepare('SELECT * FROM producto WHERE id_producto = ?');
         $query->execute([$id]);  // Pasa el valor del parámetro como un array
