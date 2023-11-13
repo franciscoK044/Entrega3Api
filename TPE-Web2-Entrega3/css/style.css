@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&family=Gabarito&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script&family=Tilt+Neon&display=swap');
+
+body {
+    background: linear-gradient(to bottom, #3498db, #e74c3c);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Gabarito', sans-serif;
+    backdrop-filter: blur(1000px); /* Ajusta el valor según tu preferencia */
+}
+
+
+
+.container-lg, h1{
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-family: fantasy;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    border-radius: 4px;
+}
+
+#btnRegister{
+    position: absolute;
+    left: 88%;
+}
+
+
+#btnSingIn{
+    position: absolute;
+    left: 76%;
+}
+
+
+.btnLogout{
+    position: absolute;
+    width: 16%;
+    left: 81%;
+    top: -54%;
+}
+
+#btnLogOut{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    background-color: transparent;
+}
+ul{
+    list-style: none;
+}
+/*
+ul,li{
+    margin: 10px;
+}
+*/
+.col-md-12{
+    margin: 10px;
+    border-radius: 10px;
+    display: block;
+    padding: 200px;
+}
+.col-md-12,h1 {
+    text-transform: uppercase;
+    color: white;
+    margin-top: 10px;
+    border-bottom: 3px solid rgb(255, 255, 255);
+}
+.row,.container{
+    width: 100%;    
+}
+
+.btn-primary{
+    padding: 18px;
+    text-transform: uppercase;
+    border: 1px solid white;
+    border-radius: 8px;
+}
+.btn-primary:hover{
+    color: rgb(4, 0, 255);
+    background-color: rgb(255, 255, 255);
+}
+.row-title{
+    margin: 10px;
+}
+.container{
+    background-color: dodgerblue;
+    padding: 20px;
+}
+/*.col-md-8{
+    text-align: center;
+}*/
+main{
+    width: 48%;
+    border-radius: 20px;
+}
+.nav_footer{
+    background-color: cornsilk;
+    border-radius: 27px;
+}
+
+.containerTitleSingIng{
+    display: flex;
+    justify-content: center;
+}
+
+#h1SingIn{
+    font-size: 178%;
+    font-family: 'Gabarito', sans-serif;    
+    color: black;
+    border-bottom: none;
+}
+
+.form-group{
+    margin: 20px 0;
+
+}
+
+form{
+    width: 100%;
+    background-color: powderblue;
+    display: flex;
+    border-radius: 15px;
+    padding: 20%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#btnEnviarLogin{
+    width: 57%;
+    padding: 11px;
+    background-color: mediumseagreen;
+}
+
+.containerH2Registers{
+    display: flex;
+    justify-content: center;
+}
+
+.containerLogin{
+    width: 100%;
+    padding-bottom: 10%;
+    font-family: 'Gabarito', sans-serif;
+}
+
+.containerRegister{
+    width: 100%;
+    padding-bottom: 10%;
+    font-family: 'Gabarito', sans-serif;
+}
+
+.formRegister{
+    --bs-gutter-y: none;
+    --bs-gutter-x: none;
+    padding-bottom: 10%;
+    font-family: 'Gabarito', sans-serif;
+}
+
+
+#h1Register{
+    width: 90%;
+    color: black;
+    border-bottom: none;
+    font-size: 178%;
+    font-family: 'Gabarito', sans-serif;
+}
+
+.col-auto{
+    margin: 20px 0;
+}
+
+#btnSendRegister{
+    width: 100%;
+    padding: 11px;
+    background-color: mediumseagreen;
+    text-transform: uppercase;
+    border: 1px solid white;
+    border-radius: 8px;
+    color: white;
+}
+
+.itemNav{
+    margin: 17px 12px;
+    font-size: 112%;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    
+    font-family: 'Gabarito', sans-serif;
+
+}
+
+.containerNav{
+    padding: 18px;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.containerH1Title{
+    background: #f8f9fa;
+    padding-top: 6px;
+    display: flex;
+    padding-bottom: 5px;
+    justify-content: center;
+}
+
+.navbar-brand{
+    border-bottom: 2.4px solid black;
+}
+
+.h1Title{
+    color: black;
+    margin: 0;
+    border: none;
+    font-family: 'Tilt Neon', sans-serif;
+    border-radius: 0;
+    width: fit-content;
+}
+
+.navbar-nav{
+    margin-top: 0;
+}
+
+span{
+    font-size: 13px;
+    font-weight: 400;
+    text-transform: initial;
+}
+
+.containerFormAgregarCategoria{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2%;
+}
+
+.formAgregarCategoria{
+    width: 42%;
+    padding: 46px 70px;
+    margin-bottom: 5%;
+}
+
+.inputFormAgregar{
+    justify-content: center;
+}
+
+#btnAgregarCategoria{
+    width: 29%;
+    padding: 13px 0%;
+}
+
+
+.containerCategorias{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    padding-bottom: 80px;
+    width: 90%;
+    margin: 58px 68px;
+    margin-top: 3%;
+    background-color: #fdfdfde6;
+}
+
+.containerH2Categorias{
+
+}
+
+.h2Categorias{
+    text-transform: uppercase;
+}
+
+.containerCards{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    border-radius: 9px;
+    flex-direction: row;
+    align-items: center;
+    padding: 3%;
+    margin-top: 3%;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    flex-wrap: wrap;
+}
+
+.card{
+    padding: 50px 20px;
+    margin: 0 25px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 19px 25px;
+}
+
+.aCategoria{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+
+.containerBtnsCategoria{
+    display: flex;
+    flex-direction: row;
+    margin-top: 8%;
+}
+
+.containerFormEditCategoria{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6%;
+}
+
+.formEditarCategoria{
+    width: 50%;
+    padding: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h1Editar{
+    border-bottom: none;
+    font-size: 178%;
+    font-family: 'Gabarito', sans-serif;
+    color: black;
+    text-transform: initial;
+
+}
+
+.inputFormEditar{
+    width: 56%;
+}
+
+
+
+.containerItem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0% 0 35% 0;
+}
+
+.cardItem{
+    width: 50%;
+    padding: 47px 0;
+}
+
+.containerCardItem{
+    padding: 0;
+    justify-content: center;
+    border-radius: 0px 0px 7px 7px;
+    display: flex;
+    background-color: white;
+    
+}
+
+.rp{
+    width: 57%;
+}
+
+.c{
+    margin-bottom: 5%;
+}

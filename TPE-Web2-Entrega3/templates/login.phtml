@@ -1,0 +1,25 @@
+<?php require 'templates/header.phtml' ?>
+<main class="containerLogin">
+<div class="mt-5 w-25 mx-auto">
+    <form method="POST" action="auth">
+        <div class="containerTitleSingIng">
+            <h1 id="h1SingIn">Iniciar Sesion</h1>
+        </div>
+        <div class="form-group">
+            <input type="email" required class="form-control" id="email" name="email" placeholder="Email" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <input type="password" required class="form-control" id="password" name="password"placeholder="Contraseña" >
+        </div>
+
+
+        <?php if ($error) : ?>
+            <div class='alert alert-danger' role='alert'>
+                <?= $error ?>
+            </div> 
+        <?php endif ?>
+       
+        <button type="submit" id="btnEnviarLogin" class="btn btn-primary mt-3">Entrar</button>
+    </form>
+</div>
+

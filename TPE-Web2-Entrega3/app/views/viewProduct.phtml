@@ -1,0 +1,47 @@
+<?php 
+    class viewProducts{
+
+        function __construct(){
+        }
+        
+        function viewCategory($categ){
+            require_once './templates/header.phtml';
+            ?>
+            <ul class="list-group">;
+                <?php foreach($categ as $t){
+                    ?>
+                    <li class="list-group-item " aria-current="true"><a href="<?php echo $t->id_categoria?>"><?php echo($t->nombre_categoria)?></a></li>      
+                <?php } ?>
+            </div>        
+        </div>
+            <?php
+        }
+        function viewProducts($products,$categorias){
+            require_once './templates/header.phtml';
+            
+            require_once './templates/showProducts.phtml';
+        }
+    
+        function viewProductoID($id_producto, $nombre_producto, $precio, $modelo, $categoria){
+            require_once './templates/header.phtml';
+            require_once './templates/showItemProducto.phtml';
+        }
+    
+        public function mostrarFormEditProducto($id,$nombre_producto,$categorias){
+            require_once './templates/header.phtml';
+            require_once './templates/formEditarProducto.phtml';
+        }
+    
+        
+        function viewItem($categ){
+            require_once './templates/header.phtml';
+            require_once './templates/showItemCategoria.phtml';
+        }
+
+        public function mostrarError($error){
+            require 'templates/header.phtml';
+            require 'templates/showError.phtml';
+
+        }
+        
+    }

@@ -1,0 +1,52 @@
+
+<div class="containerCategorias">       
+    <div class="containerH2Categorias">
+            <h2 class="h2Categorias">productos</h2>
+    </div>
+    <div class="containerCards">
+        <?php foreach($products as $t){?>
+            <div class="card">
+                <a class="aCategoria" href="verProducto/<?php echo $t->id_producto?>"> <?php echo $t->nombre_producto?></a>
+            </div>
+        <?php } ?>
+    </div>
+</div>
+
+
+
+<?php if (isset($_SESSION['email'])) : ?>
+
+    <div class="containerFormAgregarCategoria">
+    
+    <form class="formAgregarCategoria" action="agregarProducto" method="POST">
+    <div>
+        <h2>Agregar producto</h2>
+    </div>
+    <div class="row inputFormAgregar">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Producto:</label>
+                <input required name="nombre_producto" type="text" class="form-control">
+                <label>Modelo:</label>
+                <input required name="modelo" type="text" class="form-control"> 
+                <label>Precio:</label>
+                <input required name="precio" type="text" class="form-control">
+                <label>Categoria:</label>
+                <select id="id_categoria" name="id_categoria">
+                 
+                <?php foreach ($categorias as $t) : ?>
+                    <option value= "<?php echo $t->id_categoria ?>"> <?php echo $t->nombre_categoria ?> </option>        
+                    <?php endforeach; ?>
+                </select>
+                </div>
+                </div>
+                <button value="" id="btnAgregarCategoria" type="submit" class="btn btn-primary mt-2">Agregar</button>
+            
+        
+        </div>
+                </div>
+</form>
+
+<?php endif; ?>
+
+<?php

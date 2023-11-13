@@ -1,0 +1,19 @@
+<div class="containerItem">
+
+    <div class="cardItem">
+        <ul class="list-group">
+            <?php foreach ($categ as $cat) { ?>
+                <div class="c">
+                <li class="list-group-item">
+                    <p>Producto: <?php echo $cat->nombre_producto ?></p>
+                    <p>Precio: <?php echo $cat->precio ?></p>
+                    <p>Modelo: <?php echo $cat->modelo ?></p>
+                    <p>Categoria:<?php echo $cat->nombre_categoria ?></p>
+                </li>
+                </div>
+            <?php } ?>
+        </ul>
+
+        </div>
+
+</div>

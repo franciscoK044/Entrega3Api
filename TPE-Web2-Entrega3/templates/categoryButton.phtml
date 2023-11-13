@@ -1,0 +1,22 @@
+<div class="container">
+        <div class="row">
+        <?php foreach($categ as $t){
+                ?>
+                <!--<li class="list-group-item " aria-current="true"><a href="verCategoria/<?php echo $t->id_categoria?>"><?php echo($t->nombre_categoria)?></a></li>!-->      
+                <div class="col-md-12 bg-primary d-flex justify-content-center p-3"><a href="verCategoria/<?php echo $t->id_categoria ?>"  class="btn btn-primary"><?php echo $t->nombre_categoria?></a>
+                        
+                        <a href="modificar/<?php echo $t->id_categoria?>">
+                                <button type="button" class="btn btn-dark me-md-2">Editar</button>
+                        </a>
+
+                        <a href="eliminar/<?php echo $t->id_categoria;?>">
+                                <button type="button" class="btn btn-danger">Eliminar</button>
+                        </a>
+                </div>
+                
+                <a href="agregar/<?php echo $t->id_categoria;?>">
+                        <button type="button" hidden class="btn btn-success">Agregar</button>
+                </a>
+
+        <?php } ?>
+</div>

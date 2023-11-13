@@ -1,0 +1,19 @@
+<div class="containerItem">
+
+    <div class="cardItem">
+        <ul class="list-group">
+
+        <li class="list-group-item">
+            <p>Producto: <?php echo $nombre_producto ?></p>
+            <p>Precio: $ <?php echo $precio ?></p>
+            <p>Modelo: <?php echo $modelo ?></p>
+            <p>Categoria: <?php echo $categoria ?> </p>
+        </li>
+        <?php if (isset($_SESSION['email'])) : ?>
+            <?php require_once './templates/productosbutton.phtml';?>
+        <?php endif ?>
+        </ul>
+    </div>
+
+</div>
+

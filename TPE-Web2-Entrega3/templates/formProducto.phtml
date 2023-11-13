@@ -1,0 +1,25 @@
+<form class="formAgregarProducto" action="agregarProducto" method="POST">
+    <div>
+        <h2>Agregar producto</h2>
+    </div>
+    <div class="row inputFormAgregar">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Producto:</label>
+                <input required name="nombre_producto" type="text" class="form-control">
+                <label>Modelo:</label>
+                <input required name="modelo" type="text" class="form-control"> 
+                <label>Precio:</label>
+                <input required name="precio" type="text" class="form-control">
+                <label>Categoria:</label>
+                <select id="id_categoria" name="id_categoria">
+                    <?php foreach ($categorias as $t) : ?>
+                        <option value="<?php echo $t->id_categoria ?>"><?php echo $t->nombre_categoria ?></option>
+                    <?php endforeach; ?>
+                </select><br>
+                <button value="" id="btnAgregarProducto" type="submit" class="btn btn-primary mt">Agregar</button>
+            </div>
+        </div>
+    </div>
+</form>
+

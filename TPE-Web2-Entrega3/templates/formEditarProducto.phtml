@@ -1,0 +1,24 @@
+<div class="containerFormEditCategoria">
+<form class="formEditarCategoria" action="enviarFormEditProduct" method="POST" class="my-4">
+<div class="containerTitleSingIng">
+            <h1 class="h1Editar">Editar: "<?php echo $nombre_producto?>"</h1>
+        </div>
+            <div class="form-group inputFormEditar">
+            <input type="number" hidden name="id_producto" value="<?php echo $id ?>">
+                <label>Nuevo nombre:</label>
+                <input required name="nombre_producto" type="text" class="form-control">
+                <label>Nuevo Modelo:</label>
+                <input required name="modelo" type="text" class="form-control">
+                <label>Nuevo Precio:</label>
+                <input required name="precio" type="text" class="form-control">
+                <select id="id_categoria" name="id_categoria"> 
+                    <?php foreach ($categorias as $t) : ?>
+                        <option value="<?php echo $t->id_categoria ?>"><?php echo $t->nombre_categoria ?></option>
+                    <?php endforeach; ?>
+                    </select><br>
+            </div>
+        
+
+    <button type="submit" class="btn btn-primary mt-2">Editar</button>
+</form>
+</div>

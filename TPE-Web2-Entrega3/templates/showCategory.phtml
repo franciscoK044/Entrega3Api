@@ -1,0 +1,52 @@
+<?php require 'templates/header.phtml' ?>
+
+<div class="containerCategorias">
+    <div class="containerH2Categorias">
+        <h2 class="h2Categorias">Categorías</h2>
+    </div>
+    <div class="containerCards">
+        <?php foreach ($categorias as $t) : ?>
+            <div class="card">
+                <a class="aCategoria" href="verCategoria/<?php echo $t->id_categoria ?>"><?php echo $t->nombre_categoria ?></a>
+            
+                <?php if (isset($_SESSION['email'])) : ?>
+                    
+                    <div class="containerBtnsCategoria">
+                        <a href="modificar/<?php echo $t->id_categoria ?>"><button type="button" class="btn btn-dark me-2 btn-sm boton-categoria">Editar</button></a>
+                        <a href="eliminar/<?php echo $t->id_categoria ?>"><button type="button" class="btn btn-danger btn-sm boton-categoria">Eliminar</button></a>
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+
+<?php if (isset($_SESSION['email'])) : ?>
+<div class="containerFormAgregarCategoria">
+
+<form class="formAgregarCategoria" action="agregar"  method="POST">
+    <div>
+        <h2>Agregar categoria</h2>
+    </div>
+<div class="row inputFormAgregar">
+        <div class="col-9">
+            <div class="form-group">
+                <label>Nombre de la categoria:</label>
+                <input required name="nombre_categoria" type="text" class="form-control">
+            </div>
+        </div>
+
+    <button id="btnAgregarCategoria" type="submit" class="btn btn-primary mt-2">Agregar</button>
+
+</form>
+</div>
+        
+    </div>
+
+    
+</div>
+<?php endif; ?>
+
+    
+

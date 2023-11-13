@@ -1,0 +1,63 @@
+<?php
+        class viewCategorias{
+            
+
+ 
+
+////////////////////
+
+public function showCategorys($categorias){
+    require_once './templates/showCategory.phtml';
+
+
+}
+
+
+////////////////////
+
+        function viewItem($categ){
+            require_once './templates/header.phtml';
+            require_once './templates/showItem.phtml';
+            ?>
+            <?php
+        }
+        function viewCategoryButton($catego){
+            require_once './templates/header.phtml';
+            require_once './app/templates/category.phtml';
+            require_once './app/templates/categoryButton.phtml';
+            ?>
+                <?php
+        }
+        
+        
+        function mostrarForm(){
+            require_once './templates/header.phtml';
+        require_once './templates/formCategory.phtml';
+        }
+
+
+        
+        public function mostrarFormEditCategory($id_categoria, $categoria){
+            require_once './templates/header.phtml';
+            require_once './templates/formEditarCategory.phtml';
+            ?>
+<?php
+        }
+        public function mostrarError($error){
+            require 'templates/header.phtml';
+            require 'templates/footer.phtml';
+        }
+
+        function viewCategory($categ){
+            require_once './templates/header.phtml';
+            ?>
+            <ul class="list-group">;
+                <?php foreach($categ as $t){
+                    ?>
+                    <li class="list-group-item " aria-current="true"><a href="<?php echo $t->id_categoria?>"><?php echo($t->nombre_categoria)?></a></li>      
+                <?php } ?>
+            </div>        
+        </div>
+            <?php
+        }
+    }

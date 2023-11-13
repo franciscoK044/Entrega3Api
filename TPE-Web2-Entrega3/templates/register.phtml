@@ -1,0 +1,20 @@
+    <?php require_once './templates/header.phtml';?>
+    <main class="containerRegister">
+    <div class="mt-5 w-25 mx-auto">
+    <form class="row g-3 formRegister" method="POST" action="verifyRegister">
+    <div class="containerH2Registers">
+        <h1 id="h1Register">Registrarse</h2>
+    </div>
+        <div class="col-auto">
+            <label for="staticEmail2" class="visually-hidden">Email</label>
+            <input type="email" name="email" class="form-control" id="staticEmail2" placeholder="Email">
+        </div>
+        <div class="col-auto">
+            <label for="inputPassword2" class="visually-hidden">Contraseña</label>
+            <input name="password" type="password" class="form-control" id="inputPassword2" placeholder="Contraseña">
+        </div>
+        <div class="col-auto">
+            <button type="submit" id="btnSendRegister">Registrarse</button>
+        </div>
+    </form>
+    </div>
